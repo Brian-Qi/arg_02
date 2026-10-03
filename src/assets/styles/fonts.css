@@ -1,0 +1,52 @@
+/* ============================================================
+   字体栈 —— 刻意不加载任何 web 字体。
+   2003 年的中文论坛就是系统宋体 12px；换成现代无衬线体，
+   可信度立刻崩掉。这一层只有字体与最基础的 reset。
+   ============================================================ */
+
+:root {
+  --y2k-font: 'SimSun', '宋体', 'Songti SC', 'Noto Serif CJK SC', serif;
+  --y2k-head: 'SimHei', '黑体', 'Heiti SC', 'Microsoft YaHei', sans-serif;
+  --y2k-mono: 'Courier New', Courier, monospace;
+}
+
+html {
+  background: #f5f5f5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 12px/1.6 var(--y2k-font);
+  color: #333;
+  background: #f5f5f5;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--y2k-head);
+  font-weight: 700;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+input,
+select,
+button,
+textarea {
+  font-family: var(--y2k-font);
+  font-size: 12px;
+}
+
+/* 当年的表格标签属性已废弃，但表格数据仍用真表格承载 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}

@@ -1,0 +1,205 @@
+/* ============================================================
+   backup —— 数据导出工具。做成千禧年那种"小窗口"：
+   深蓝标题栏、1px 边框、硬阴影、无圆角
+   ============================================================ */
+
+.bkt {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 900;
+  width: 372px;
+  background: #fff;
+  border: 1px solid #7a8ea6;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.28);
+  font-size: 12px;
+}
+.bkt-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 24px;
+  padding: 0 4px 0 8px;
+  background: linear-gradient(#2a4a78, #1b3457);
+  color: #ffe9a8;
+  font-family: var(--y2k-head);
+}
+.bkt-title .x {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #6b83a3;
+  background: #dce6f2;
+  color: #123;
+  font: 12px/16px var(--y2k-mono);
+  cursor: pointer;
+}
+.bkt-body {
+  padding: 8px;
+}
+.bkt-modes {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.bkt-modes button {
+  flex: 1;
+  padding: 4px 0;
+  border: 1px solid #9aa8b8;
+  background: #eef3f9;
+  cursor: pointer;
+}
+.bkt-modes button.on {
+  border-color: #b8860b;
+  background: linear-gradient(#ffd98a, #f0c020);
+  font-weight: 700;
+}
+.bkt-modes button:disabled {
+  color: #999;
+  cursor: default;
+}
+.bkt-stats {
+  padding: 6px 8px;
+  border: 1px solid var(--c-border);
+  background: #f7f9fc;
+  line-height: 1.9;
+}
+.bkt-stats .mono {
+  color: #123;
+}
+.bkt-stats .miss {
+  color: var(--c-warn);
+  font-weight: 700;
+}
+.bkt-bar {
+  height: 12px;
+  margin: 6px 0;
+  border: 1px solid #9aa8b8;
+  background: #eef3f9;
+}
+.bkt-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(#7fb2e5, #3a6ea5);
+}
+.bkt-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  color: #556;
+}
+.bkt-time input {
+  width: 44px;
+  padding: 1px 2px;
+  border: 1px solid #9aa8b8;
+  font-family: var(--y2k-mono);
+  text-align: center;
+}
+.bkt-time button {
+  margin-left: auto;
+  padding: 2px 6px;
+  border: 1px solid #9aa8b8;
+  background: #eef3f9;
+  cursor: pointer;
+}
+.bkt-time button.on {
+  border-color: #b8860b;
+  background: linear-gradient(#ffd98a, #f0c020);
+  font-weight: 700;
+}
+.bkt-hint {
+  margin-top: 4px;
+  padding: 4px 6px;
+  background: #fff5f5;
+  border: 1px solid #e0c0c0;
+  color: #a00;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.bkt-sec {
+  margin-top: 8px;
+  border: 1px solid var(--c-border);
+}
+.bkt-sec h4 {
+  margin: 0;
+  padding: 4px 6px;
+  font-size: 12px;
+  color: #234;
+  background: linear-gradient(#e8eef7, #dce6f2);
+  border-bottom: 1px solid var(--c-border);
+}
+.bkt-list {
+  max-height: 170px;
+  overflow: auto;
+}
+.bkt-list table {
+  width: 100%;
+  font-size: 12px;
+}
+.bkt-list td {
+  padding: 3px 6px;
+  border-bottom: 1px solid #eef1f5;
+  vertical-align: top;
+}
+.bkt-list tr:last-child td {
+  border-bottom: 0;
+}
+.bkt-list .tid {
+  color: #889;
+  font-family: var(--y2k-mono);
+  white-space: nowrap;
+}
+.bkt-list .why {
+  color: #667;
+}
+.bkt-miss {
+  padding: 6px 8px;
+  background: #fff5f5;
+  color: #a00;
+  line-height: 1.9;
+}
+.bkt-note {
+  padding: 6px 8px;
+  color: #667;
+  line-height: 1.8;
+}
+.bkt-clean {
+  display: inline-block;
+  padding: 3px 8px;
+  border: 1px solid #b8860b;
+  background: linear-gradient(#fff3d8, #f0dca8);
+  color: #7a5200;
+  text-decoration: none;
+  font-family: var(--y2k-head);
+}
+.bkt-clean:hover {
+  background: linear-gradient(#ffe9a8, #e8c860);
+  color: #000;
+}
+
+.bkt-tab {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 900;
+  padding: 6px 10px;
+  border: 1px solid #7a8ea6;
+  background: linear-gradient(#2a4a78, #1b3457);
+  color: #ffe9a8;
+  font-family: var(--y2k-head);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 760px) {
+  .bkt {
+    right: 6px;
+    bottom: 6px;
+    left: 6px;
+    width: auto;
+  }
+  .bkt-list {
+    max-height: 132px;
+  }
+}

@@ -1,0 +1,94 @@
+/* ============================================================
+   forum-responsive —— 窄屏"降级"，不是"重设计"
+   保持老站感：只做折行、横向滚动、缩小固定宽度
+   ============================================================ */
+
+@media (max-width: 1000px) {
+  .wrap {
+    width: auto;
+    max-width: 960px;
+    margin: 0 8px;
+  }
+}
+
+/* 表格在窄屏横向滚动，而不是压缩换行 */
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 760px) {
+  /* 帖子页：左右分栏折成上下，用户信息横排 */
+  .post {
+    flex-direction: column;
+  }
+  .post .u {
+    width: auto;
+    flex: none;
+    border-right: 0;
+    border-bottom: 1px dashed #dbe3ec;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    padding: 8px;
+  }
+  .post .u .avatar {
+    width: 52px;
+    height: 52px;
+    flex: none;
+    background-size: 52px 52px;
+  }
+  .post .u .uinfo {
+    margin-top: 0;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 10px;
+    line-height: 1.7;
+  }
+  .post .u .uinfo br {
+    display: none;
+  }
+  .post .u .uact {
+    margin-top: 0;
+    margin-left: auto;
+  }
+  .post .c .cbd {
+    font-size: 13px;
+  }
+
+  /* 公告不滚动，改静态两行显示 */
+  .announce .roll {
+    animation: none;
+    white-space: normal;
+  }
+
+  .col-bdlast,
+  .col-tlast {
+    width: 150px;
+  }
+  .banner {
+    height: 68px;
+  }
+  .banner .brand h1 {
+    font-size: 22px;
+    letter-spacing: 3px;
+  }
+  .nav-in {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 6px 8px;
+  }
+}
+
+/* 尊重系统设置：关掉滚动公告与一切动画 */
+@media (prefers-reduced-motion: reduce) {
+  .announce .roll {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

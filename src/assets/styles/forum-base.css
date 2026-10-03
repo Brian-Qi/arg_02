@@ -1,0 +1,254 @@
+/* ============================================================
+   forum-base —— 千禧年论坛的基础视觉语言
+   配色、链接、表格网格、星级、状态、引用、计数器
+   ============================================================ */
+
+:root {
+  --c-bg: #f5f5f5;
+  --c-panel: #ffffff;
+  --c-border: #cccccc;
+  --c-border-strong: #9aa8b8;
+  --c-th-a: #e8eef7;
+  --c-th-b: #dce6f2;
+  --c-row-alt: #f7f7f7;
+  --c-text: #333333;
+  --c-muted: #888888;
+  --c-link: #0000cc;
+  --c-link-visited: #551a8b;
+  --c-link-hover: #ff0000;
+  --c-accent: #000080;
+  --c-hl: #ffffe0;
+  --c-warn: #cc0000;
+  --c-ok: #009900;
+}
+
+/* ---------- 链接：蓝色 + 下划线，悬停变红（不许改） ---------- */
+a {
+  color: var(--c-link);
+  text-decoration: underline;
+}
+a:visited {
+  color: var(--c-link-visited);
+}
+a:hover {
+  color: var(--c-link-hover);
+}
+
+/* ---------- 版心：固定 960，当年的标准宽度 ---------- */
+.wrap {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* ---------- 面板 ---------- */
+.panel {
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
+}
+.panel + .panel {
+  margin-top: 6px;
+}
+.panel-hd {
+  padding: 5px 8px;
+  font-family: var(--y2k-head);
+  font-size: 12px;
+  color: var(--c-accent);
+  background: linear-gradient(#e8eef7, #dce6f2);
+  border-bottom: 1px solid var(--c-border);
+}
+.panel-hd .more {
+  float: right;
+  font-family: var(--y2k-font);
+  font-weight: 400;
+}
+.panel-bd {
+  padding: 8px;
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---------- 表格：网格感靠边框线拼出来 ---------- */
+.datatable {
+  width: 100%;
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
+}
+.datatable th,
+.datatable td {
+  padding: 6px 8px;
+  border: 1px solid var(--c-border);
+  text-align: left;
+  vertical-align: middle;
+}
+.datatable th {
+  font-family: var(--y2k-head);
+  font-weight: 700;
+  color: #234;
+  background: linear-gradient(#e8eef7, #dce6f2);
+  white-space: nowrap;
+}
+.datatable tbody tr:nth-child(even) td {
+  background: var(--c-row-alt);
+}
+.datatable td.num,
+.datatable th.num {
+  text-align: center;
+  width: 62px;
+  white-space: nowrap;
+}
+.datatable td.center,
+.datatable th.center {
+  text-align: center;
+}
+
+/* ---------- 版块表专用：图标 + 名称 + 说明 ---------- */
+.bdname {
+  font-family: var(--y2k-head);
+  font-size: 13px;
+}
+.bddesc {
+  color: var(--c-muted);
+  font-size: 11px;
+}
+.bdmod {
+  color: var(--c-muted);
+  font-size: 11px;
+}
+.bdico {
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  margin-right: 6px;
+  border: 1px solid #9aa8b8;
+  background: linear-gradient(#c9d8ea, #8fa3bb);
+  color: #fff;
+  font: 11px/16px var(--y2k-head);
+  text-align: center;
+  vertical-align: -3px;
+}
+.bdico.hot {
+  border-color: #b8860b;
+  background: linear-gradient(#ffd98a, #e0a800);
+}
+
+/* ---------- 星级 / 状态 / 头衔 ---------- */
+.stars {
+  color: #f60;
+  font-family: var(--y2k-mono);
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+.st-on {
+  color: var(--c-ok);
+}
+.st-off {
+  color: #999;
+}
+.rank {
+  display: inline-block;
+  padding: 0 5px;
+  border: 1px solid #b9c6d6;
+  background: #eef3f9;
+  color: #456;
+  font-size: 11px;
+}
+.rank.mod {
+  border-color: #d0a24c;
+  background: #fff3d8;
+  color: #8a5a00;
+}
+
+/* ---------- 引用块（淡黄底，当年的样子） ---------- */
+.quote {
+  margin: 8px 0;
+  padding: 6px 8px;
+  background: var(--c-hl);
+  border: 1px solid #e2daa6;
+  color: #665;
+}
+.quote .qhd {
+  color: #998;
+  font-size: 11px;
+}
+
+/* ---------- 正文里出现的"代码/字段" ---------- */
+.mono {
+  font-family: var(--y2k-mono);
+}
+.uid {
+  color: #a0a0a0;
+  font-size: 10px;
+}
+
+/* ---------- 签名档：虚线上方，两行封顶 ---------- */
+.sig {
+  margin-top: 12px;
+  padding-top: 6px;
+  border-top: 1px dashed #ccc;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ---------- 数字计数器：黑底绿字，七位 ---------- */
+.counter {
+  display: inline-flex;
+  gap: 1px;
+  vertical-align: middle;
+}
+.counter i {
+  min-width: 12px;
+  padding: 1px 2px;
+  background: #000;
+  color: #0f0;
+  font: 12px/1.4 var(--y2k-mono);
+  font-style: normal;
+  text-align: center;
+}
+
+/* ---------- 分页 ---------- */
+.pager {
+  padding: 8px;
+  text-align: right;
+  color: var(--c-muted);
+}
+.pager a,
+.pager b {
+  display: inline-block;
+  min-width: 18px;
+  margin-left: 3px;
+  padding: 1px 5px;
+  border: 1px solid var(--c-border);
+  background: #fbfbfb;
+  text-align: center;
+  font-weight: 400;
+  text-decoration: none;
+}
+.pager b {
+  background: #e8eef7;
+  border-color: var(--c-border-strong);
+  font-weight: 700;
+}
+.pager a:hover {
+  border-color: var(--c-link);
+}
+
+/* ---------- 小工具类 ---------- */
+.muted {
+  color: var(--c-muted);
+}
+.small {
+  font-size: 11px;
+}
+.red {
+  color: var(--c-warn);
+}
+.nowrap {
+  white-space: nowrap;
+}
+.vam {
+  vertical-align: middle;
+}

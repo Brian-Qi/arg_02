@@ -1,0 +1,46 @@
+{
+  "name": "yehangchuan-arg",
+  "version": "0.1.0",
+  "private": true,
+  "license": "CC-BY-NC-ND-4.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{js,vue,css}\" \"tests/**/*.js\" \"scripts/**/*.mjs\" \"*.{js,json}\"",
+    "format:check": "prettier --check \"src/**/*.{js,vue,css}\" \"tests/**/*.js\"",
+    "typecheck": "vue-tsc --noEmit -p jsconfig.json",
+    "check": "node scripts/check-project.mjs",
+    "audit": "node scripts/audit-forum.mjs",
+    "gen:01": "node scripts/genimg.mjs --manifest assets/manifests/forum-01.json",
+    "gen:02": "node scripts/genimg.mjs --manifest assets/manifests/forum-02.json",
+    "gen:03": "node scripts/genimg.mjs --manifest assets/manifests/forum-03.json",
+    "gen": "npm run gen:01 && npm run gen:02 && npm run gen:03",
+    "gen:dry": "node scripts/genimg.mjs --manifest assets/manifests/forum-01.json --dry-run && node scripts/genimg.mjs --manifest assets/manifests/forum-02.json --dry-run && node scripts/genimg.mjs --manifest assets/manifests/forum-03.json --dry-run",
+    "img:webp": "python scripts/to-webp.py _raw_img public/img _raw_orig",
+    "assets": "npm run gen && npm run img:webp && npm run check"
+  },
+  "dependencies": {
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-vue": "^10.11.0",
+    "globals": "^17.12.0",
+    "jsdom": "^25.0.1",
+    "prettier": "^3.9.8",
+    "typescript": "^5.9.0",
+    "vite": "^5.2.8",
+    "vitest": "^2.1.9",
+    "vue-tsc": "^2.2.0"
+  }
+}
